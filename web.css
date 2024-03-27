@@ -1,0 +1,7 @@
+body {
+background-image: url("carte.jpg");
+}
+
+position: relative;
+background: url(/src/assets/img/gaul_map_cities.jpg) no-repeat; width: 780px;
+height: 675px;
