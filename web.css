@@ -5,3 +5,21 @@ background-image: url("carte.jpg");
 position: relative;
 background: url(/src/assets/img/gaul_map_cities.jpg) no-repeat; width: 780px;
 height: 675px;
+
+
+#map {
+            position: relative;
+            width: 600px; /* Taille de votre image */
+            height: 400px; /* Taille de votre image */
+            background-image: url('carte.jpg');
+        }
+        .region {
+            position: absolute;
+            cursor: pointer;
+        }
+
+
+        /* Style pour visualiser les régions, à supprimer ou modifier */
+        .region:hover {
+            background-color: rgba(255,255,255,0.5);
+        }
