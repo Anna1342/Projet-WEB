@@ -19,6 +19,8 @@ const adjacencyLists = [
 [12,15], 
 ]
 
+# regions 
+
 const regionsCentersCoords = [
 [207,282], [328,251], [407,151], [536,114], 
 [454,254], [542,208], [577,296], [661,228],
@@ -28,6 +30,42 @@ const regionsCentersCoords = [
 ]
 
 let ownedRegions = [10,15,16]
+
+document.getElementById('map').addEventListener('click', function(event) {
+    const rect = this.getBoundingClientRect(); // Obtient la position de l'image
+    const x = event.clientX - rect.left; // Position x du clic relative à l'image
+    const y = event.clientY - rect.top; // Position y du clic relative à l'image
+
+    checkRegions(x, y);
+});
+
+function checkRegions(x, y) {
+    const radius = 30; // Rayon de tolérance
+
+    regions.forEach(region => {
+        const distance = Math.sqrt(Math.pow(region.x - x, 2) + Math.pow(region.y - y, 2));
+        if (distance <= radius) {
+            alert(`Clic dans la région ${region.id}`);
+            // Vous pouvez effectuer d'autres actions ici, comme mettre à jour l'interface utilisateur
+        }
+    });
+}
+
+
+#villes 
+
+  
+for(let i = 0; i<positionCities.lenght; i++){
+  let img = new Image();
+  img.src = '/src/assets.jpg';
+  img.classList.add('city')
+  img.style.left = positionCities[i][0]+'px'; 
+  img.style.top = positionCities [i][1]+'px';
+  document.getElementById('plan_map').appendChild(img);
+}
+
+
+
 
 const positionCities = [ [380,252], [288,480], [480,408]
 ]
