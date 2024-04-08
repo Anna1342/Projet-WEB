@@ -3,17 +3,35 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="web.css"/>
-        <title>.com</title>
+        <title>supergame.com</title>
+        <script src="web.js"></script>
+
     </head>
     
     <header>
+        <form id="formulaire" method="post">
+            <p>
+            <label for ="pseudo" id="pseudo"> Entrer votre pseudo: </label>
+            <input type="text" name="pseudo" id=""pseudo/>
+            <input type="submit" value="Envoyer" onclick="envoyerFormulaire()"/>
+
+            </p>    
+        
+        </form> 
+        <div class="bordereau">
+        <a href="file:///Users/garcia/Downloads/Projet%20/projet%20.html">Accueil</a>
+
+
         
        <div id="popin" class="popin">
           <div class="popin-content">
             <span class="close" id="closeBtn">&times;</span>
             <h2>Welcome to our Game!</h2>
-            <p>In this game, your goal is to...</p>
-        </div>
+            <p>In this game, your goal is to fight against others uniies and win the most of territories is possible </p>
+            </p>
+          </div>
+          <button id="fermerBtn1">J'ai compris</button>
+       </div>
     </header>
 
     <body>                
@@ -38,6 +56,17 @@
         </div>
     <script src="web.js"></script>
     </body>
+
+    <footer> 
+        <div class="footer-audio">
+            <audio controls autoplay>
+            <source src="Caesar III (Original Score)  Full Album.mp3" type="audio/mpeg"/>
+        </audio>
+        </div>
+
+
+    </footer>
+
 </html>
 
 
