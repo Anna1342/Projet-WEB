@@ -1,3 +1,35 @@
+var pseudo = prompt("Veuillez entrer votre pseudo:");
+
+
+function envoyerformulaire() {
+  // ouvre une fenetre sans barre d'etat, ni d'ascenceur
+  w=open("",'formulaire','width=400,height=200,toolbar=no,scrollbars=no,resizable=yes');	
+  w.document.close();
+}
+
+
+
+
+
+
+document.getElementById('popupBtn').addEventListener('click', function() {
+  document.getElementById('popup').classList.remove('hidden');
+});
+
+document.getElementById('fermerPopupBtn').addEventListener('click', function() {
+  document.getElementById('popup').classList.add('hidden');
+});
+
+
+var pseudo = getElementsById('pseudo');
+pseudo.style.color = 'blue';
+pseudo.style.width = '200px';
+
+
+
+
+
+
 const nbRegions = 17;
 const adjacencyLists = [ 
 [1,8],
