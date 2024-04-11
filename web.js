@@ -1,29 +1,179 @@
-var pseudo = prompt("Veuillez entrer votre pseudo:");
 
 
-function envoyerformulaire() {
-  // ouvre une fenetre sans barre d'etat, ni d'ascenceur
-  w=open("",'formulaire','width=400,height=200,toolbar=no,scrollbars=no,resizable=yes');	
-  w.document.close();
+// Fonction pour afficher le popin spécifié
+function afficherPopin(popin) {
+  var popin = document.getElementById(popin);
+  if (popin) {
+      popin.classList.remove('hidden');
+  }
+}
+
+// Fonction pour masquer tous les popins
+function masquerPopins() {
+  var popin = document.querySelectorAll('.popin');
+  popin.forEach(function(popin) {
+      popin.classList.add('hidden');
+  });
+}
+
+// Fonction pour envoyer le formulaire
+function recupererpseudo() {
+ 
+  var pseudoValue = document.querySelector("#pseudoInput").value;
+  var pseudoAffichee = document.querySelector("#pseudoAffichee");
+  pseudoAffichee.innerHTML = " pseudo: " + pseudoValue;
+
+}
+
+window.addEventListener('load', function() {
+  // Afficher le premier popin au chargement de la page
+  afficherPopin('popin');
+
+  // Ajouter des écouteurs d'événements pour les boutons de fermeture des popins
+  document.getElementById('fermerBtn1').addEventListener('click', function() {
+      masquerPopins();
+      afficherPopin('popin2'); // Affichez le popin suivant
+    
+  });
+
+  document.getElementById('fermerBtn2').addEventListener('click', function() {
+      masquerPopins();
+      afficherPopin('popin3')
+  });
+
+  document.getElementById('formulaire').addEventListener('submit', function(event) {
+    // Empêchez le comportement par défaut du formulaire (rechargement de la page)
+    event.preventDefault();
+    
+    masquerPopins();
+
+  });
+
+  
+});
+
+var pseudo = document.getElementById('pseudo');
+var player = document.querySelector('audio')
+
+
+
+
+function toggleResources() {
+  const resourcesContainer = document.getElementById('resourcesContainer');
+  resourcesContainer.classList.toggle('hidden');
+}
+// Sélectionnez l'élément emoji
+const emoji = document.getElementById('emoji');
+
+// Sélectionnez la boîte de dialogue des ressources
+const resourcesContainer = document.getElementById('resourcesContainer');
+
+// Lorsque l'élément emoji est cliqué
+emoji.addEventListener('click', function() {
+    // Affiche la boîte de dialogue des ressources
+    resourcesContainer.classList.toggle('hidden');
+});
+
+
+
+
+let ressources = {
+  denarii: 2000,
+  victualia: 500,
+  lignum: 20,
+  ferrum: 20,
+  petra: 20,
+  manupretium:2,
+}; 
+
+let ordo = 75; 
+
+const buildings = {
+  "Forum": { coutInitial: {petra : 20, denarii:500 } , conditionsRevenu: { ordonnance: 70 }, revenu: { denarii:100}},
+  "Bains": { coutInitial: {petra : 10, denarii:500 }, revenu: {ordo:10} },
+  "Aqueduc": { coutInitial: {petra : 30, denarii:1500 }, revenu:{ordo:20} },
+  "Amphitéatre": { coutInitial:{petra : 20, denarii:1000 }, revenu:{ordo:20} },
+  "Temple": { coutInitial:{petra : 20, denarii:1000 }, revenu: {ordo:10} },
+  "Caserne": { coutInitial:{petra : 5,  denarii:1000, lignum: 10}, conditionsRevenu: { ordonnance:  50 }, revenu: 20 },
+  "Ecurie": { coutInitial: {petra : 5,  denarii:1000, lignum: 20}, conditionsRevenu: { ordonnance: 50 }, revenu: 20 },
+
+};
+
+function construirebuildings(type) {
+  const building = buildings[type];
+  if (verifierRessourcesSuffisantes(batiment.coutInitial)) {
+      soustraireRessources(batiment.coutInitial);
+      // Mettre à jour d'autres états du jeu en fonction du bâtiment construit
+      // Par exemple, ajouter le bâtiment à la liste des bâtiments du joueur
+  } else {
+      console.log("Ressources insuffisantes pour construire ce bâtiment !");
+  }
+}
+
+
+function mettreAJourRessources() {
+  for (const type in buildings) {
+      const building = buildings[type];
+      if (remplirConditionsRevenu(batiment)) {
+        ajouterRevenu(batiment.revenu);
+   }
+  }
+}
+
+function verifierRessourcesSuffisantes(cost) {
+  for (const ressource in cost) {
+      if (ressources[ressource] < cost[ressource]) {
+          return false;
+      }
+  }
+  return true;
+}
+
+
+function soustraireRessources(cost) {
+  for (const ressource in cost) {
+      ressources[ressource] -= cost[ressource];
+  }
+}
+
+// Fonction pour vérifier si un bâtiment remplit les conditions pour produire des revenus
+function remplirConditionsRevenu(batiment) {
+  const conditionsRevenu = batiment.conditionsRevenu;
+  if (!conditionsRevenu) {
+      return true; // Aucune condition spécifiée, donc le bâtiment peut toujours produire des revenus
+  }
+  for (const condition in conditionsRevenu) {
+      if (condition === 'ordonnance' && ordo < conditionsRevenu[condition]) {
+          return false;
+      }
+  }
+  return true;
+}
+
+// Fonction pour ajouter les revenus d'un bâtiment au joueur
+function ajouterRevenu(revenu) {
+  for (const ressource in revenu) {
+      ressources[ressource] += revenu[ressource];
+  }
 }
 
 
 
 
+// Mettre à jour les ressources dans le HTML
+function mettreAJourRessourcesHTML() {
+  const ressourcesContainer = document.getElementById('ressourcesContainer');
+  ressourcesContainer.innerHTML = ''; // Effacer le contenu précédent
 
+  for (const ressource in ressources) {
+      const li = document.createElement('li');
+      li.innerText = `${ressource}: ${ressources[ressource]}`;
+      ressourcesContainer.appendChild(li);
+  }
+}
 
-document.getElementById('popupBtn').addEventListener('click', function() {
-  document.getElementById('popup').classList.remove('hidden');
-});
-
-document.getElementById('fermerPopupBtn').addEventListener('click', function() {
-  document.getElementById('popup').classList.add('hidden');
-});
-
-
-var pseudo = getElementsById('pseudo');
-pseudo.style.color = 'blue';
-pseudo.style.width = '200px';
+// Appelez cette fonction chaque fois que vous souhaitez mettre à jour les ressources dans votre interface utilisateur
+mettreAJourRessourcesHTML();
 
 
 
