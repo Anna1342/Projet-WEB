@@ -4,35 +4,78 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="web.css"/>
         <title>supergame.com</title>
-        <script src="web.js"></script>
-
+       
     </head>
+
     
     <header>
-        <form id="formulaire" method="post">
-            <p>
-            <label for ="pseudo" id="pseudo"> Entrer votre pseudo: </label>
-            <input type="text" name="pseudo" id=""pseudo/>
-            <input type="submit" value="Envoyer" onclick="envoyerFormulaire()"/>
 
-            </p>    
-        
-        </form> 
         <div class="bordereau">
-        <a href="file:///Users/garcia/Downloads/Projet%20/projet%20.html">Accueil</a>
+            <a href="file:///Users/garcia/Downloads/Projet%20/projet%20.html">Accueil</a>
+        </div>
 
-
-        
-       <div id="popin" class="popin">
-          <div class="popin-content">
-            <span class="close" id="closeBtn">&times;</span>
-            <h2>Welcome to our Game!</h2>
-            <p>In this game, your goal is to fight against others uniies and win the most of territories is possible </p>
-            </p>
-          </div>
-          <button id="fermerBtn1">J'ai compris</button>
-       </div>
     </header>
+
+    <body> 
+        <script src="web.js"></script>
+
+
+        <div id="popin" class="popin hidden">
+            <div class="popin-content">
+                <h2>Welcome to our Game!</h2>
+                <p>In this game, your goal is to fight against others unities and win the most of territories is possible </p>
+            </div>
+            <button id="fermerBtn1">J'ai compris</button>
+        </div>
+
+        <div id="popin2" class="popin hidden">
+            <div class="popin-content">
+                <h3>Is it clear?</h3>
+                <p>Please confirm if the instructions are clear:</p>
+                
+            </div>
+            <button id="fermerBtn2">J'ai compris</button>
+        </div>
+
+
+        <div id="popin3" class="popin hidden">
+            <div class="popin-content">
+
+                <form id="formulaire" method="post">
+
+                    <p>  
+                        <label for ="pseudo" id="pseudoInput"> Entrer votre pseudo: </label>
+                        <input type="text" name="pseudo" id="pseudoInput"/>
+                        <input type="submit" value="Envoyer"/>
+                    </p>
+                    <!--onclick="recupererpseudo()" -->
+
+                </form>  
+
+            </div>
+
+            <div id="pseudoAffichee"></div>
+        </div>
+
+
+        <div id="emoji" onclick="toggleResources()"> 
+
+            <div id="resourcesContainer" class="hidden">
+        
+                <h2>Ressources du Jeu</h2>
+            
+                <ul id="resourcesList">
+                    <li>denarii: 2000</li>
+                    <li>victualia: 500</li>
+                    <li>lignum: 20</li>
+                    <li>ferrum: 20</li>
+                    <li>petra: 20</li>
+                    <li>manupretium: 2/ ville fct pr chaque ville</li>
+                    <li>ordo: 80 %</li>
+                </ul>
+            </div>
+        </div>
+       
 
     <body>                
         <div id="map">
