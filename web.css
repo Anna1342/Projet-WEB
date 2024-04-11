@@ -1,8 +1,8 @@
-bordereau{
-	width: 1000px; /* Largeur souhaitée de la zone */
+
+.bordereau{
+	width: 1000px ; /* Largeur souhaitée de la zone */
     height:50PX; /* Hauteur souhaitée de la zone */
-	border: 10px; 
-	margin: 0;
+	border: 20px; 
 	background-color: rgb(74, 74, 135);
 	text-align: left;
 }
@@ -19,14 +19,135 @@ bordereau{
 	text-decoration: underline;
 }
 
+
 body {
     background-image: url('/Users/garcia/Downloads/Projet /Carte.png');
-    background-size:cover; 
-    background-repeat: no-repeat;
-    position :relative;
-    width: 780px;
-    height:675px;  
+    background-size:cover; /* Assure que l'image couvre tout l'arrière-plan */
+    background-repeat: no-repeat; 
+	position : flex;
+	width: 300px;
+	height:500px;  
 }
+
+
+
+.hidden {
+    display: none;
+}
+
+.popin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width:500px;
+    height:300px;
+    transform: translate(-50%, -50%);
+    padding:20px;
+    z-index: 9999;
+    background-image: url('/Users/garcia/Downloads/Projet /poppin.jpg-transformed.png');
+    background-size: cover; /* Assurez-vous que l'image couvre toute la zone */
+    background-position: center; /* Centrez l'image */
+  }
+  
+.popin-content{
+    text-align: center;
+    text-size-adjust: auto; /* Centre le texte à l'intérieur du parchemin */    
+    width: 300px; /* Largeur souhaitée de la zone */
+    height:100PX; /* Hauteur souhaitée de la zone */
+    border: 10px; 
+    overflow: auto; /* Ajoute une barre de défilement si le texte dépasse la taille de la zone */
+    padding: 80px 80px 20px;
+    margin: 20px; /* Ajoute une marge égale tout autour du popin */
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.popin-content h2 {
+    margin-top: 0;
+}
+
+.popin-content p {
+    margin-bottom: 20px;
+}
+
+.popin-content button {
+    padding: 20px;
+    background-color: #f2f7fd;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+.popin-content button:hover {
+    background-color: #0d0e0f;
+}
+
+pseudoInput {
+    position:fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #121111;
+
+
+}
+
+#emoji {
+    cursor: pointer;
+    width: 50px;
+    height: 50px; 
+    background-image: url('/Users/garcia/Downloads/Projet /Ressources.png'); 
+    position: top;
+    background-repeat:no-repeat;
+    background-size:cover;
+
+
+
+}
+    
+
+#resourcesContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 300px;
+    background: url('/Users/garcia/Downloads/Projet /poppin.jpg-transformed.png') center/cover;
+    text-align: center;
+    overflow: auto;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 9999;
+    color: black
+}
+
+#resourcesContainer h2,
+#resourcesList {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+ 
+}
+
+#resourcesContainer h2 {
+    top: 30%; /* Ajustez la position verticale du titre selon vos besoins */
+    font-size: 24px;
+    text-align: top; /* Cette propriété n'est pas valide, vous pouvez la supprimer */
+}
+
+#resourcesList {
+    
+    top:60%;
+    text-align: justify;
+   
+}
+
 
 map {
 background-image: url("carte.jpg");
@@ -54,33 +175,6 @@ height: 675px;
             background-color: rgba(255,255,255,0.5);
         }
 
-.popin {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.popin-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  text-align: center;
-  text-size-adjust: auto;
-  background-image: url('/Users/garcia/Downloads/Projet /poppin.jpg-transformed.png');
-  background-size: cover; /* Assurez-vous que l'image couvre toute la zone */
-  background-position: center; /* Centrez l'image */
-  flex-direction: column;
-  justify-content: center;
-  position: flex;
-}
 
 .close {
   color: #aaa;
@@ -95,3 +189,5 @@ height: 675px;
   text-decoration: none;
   cursor: pointer;
 }
+
+==> je pense pas besoin des close moi ca s'appelle hiden 
